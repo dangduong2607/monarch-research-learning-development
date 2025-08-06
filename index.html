@@ -1,1 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monarch Research | Learning & Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #00509e;
+            --accent-blue: #0077cc;
+            --light-blue: #e6f2ff;
+            --dark-blue: #001a33;
+            --sky-blue: #64d8ff;
+            --gold: #FFD700;
+            --text-color: #333;
+            --light-text: #fff;
+            --gray-bg: #f5f9ff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--sky-blue);
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+        
+        .logo span {
+            color: var(--sky-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--sky-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 26, 51, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--light-text);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 119, 204, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-blue);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold) 0%, #FFA500 100%);
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+        
+        .btn-gold:hover {
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: var(--primary-blue);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--sky-blue));
+            border-radius: 3px;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Program Overview */
+        .overview {
+            background-color: var(--light-blue);
+        }
+        
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .overview-text {
+            padding: 20px;
+        }
+        
+        .overview-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .overview-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .detail-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-card i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        .detail-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        
+        .overview-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .overview-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Curriculum Section */
+        .curriculum {
+            background-color: white;
+        }
+        
+        .modules-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .module {
+            background: var(--light-blue);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 119, 204, 0.15);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .module-header h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        
+        .module-content {
+            padding: 30px;
+            display: none;
+        }
+        
+        .module-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .module-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .topic {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .topic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 119, 204, 0.1);
+        }
+        
+        .topic h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .topic h4 i {
+            color: var(--accent-blue);
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .benefit-icon {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--secondary-blue) 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .benefit-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .benefit-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+        
+        .benefit-content ul {
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .benefit-content ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-content ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+        }
+        
+        .testimonials h2 {
+            color: white;
+        }
+        
+        .testimonials h2::after {
+            background: linear-gradient(90deg, var(--sky-blue), var(--gold));
+        }
+        
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .testimonial-content {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .testimonial-content:before,
+        .testimonial-content:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--sky-blue);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-content:before {
+            top: -20px;
+            left: -15px;
+        }
+        
+        .testimonial-content:after {
+            bottom: -40px;
+            right: -15px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--sky-blue);
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-nav button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .testimonial-nav button:hover {
+            background: var(--sky-blue);
+            color: var(--dark-blue);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 26, 51, 0.95)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .cta h2::after {
+            background: var(--gold);
+            width: 150px;
+        }
+        
+        .cta p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--light-text);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--sky-blue);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--sky-blue);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark-blue);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-card {
+                padding: 15px;
+            }
+            
+            .benefit-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://media.licdn.com/dms/image/v2/D560BAQH1AH_iYY2YXg/company-logo_200_200/B56ZWT7n28GUAM-/0/1741943635828/monarchequityresearch_logo?e=1757548800&v=beta&t=L9rJb7Q4T4HxLsdGI8gOWvevpTbWEPd2-vpH9WnqyUU" alt="Monarch Research Logo">
+                <h1>Monarch <span>Research</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#overview">Program</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#cta">Apply</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Monarch Research Learning & Development</h2>
+            <p>Professional Financial Modeling Training with WallStreetPrep</p>
+            <div class="btn-container">
+                <a href="#curriculum" class="btn">View Curriculum</a>
+                <a href="#cta" class="btn btn-gold">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview Section -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <h2>Professional Development Program</h2>
+            <p class="section-intro">Monarch Research partners with WallStreetPrep to provide elite financial modeling training for our analysts, equipping them with industry-standard skills for superior investment analysis.</p>
+            
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>Transform Your Analytical Skills</h3>
+                    <p>Our comprehensive training program uses WallStreetPrep's acclaimed curriculum to develop expert financial modeling capabilities. Through intensive training, analysts gain practical skills in valuation, forecasting, and financial statement analysis.</p>
+                    
+                    <div class="overview-details">
+                        <div class="detail-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Certification</h4>
+                            <p>WallStreetPrep Certification</p>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>Duration</h4>
+                            <p>12-Week Intensive Program</p>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h4>Format</h4>
+                            <p>Hybrid Learning Model</p>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>Outcome</h4>
+                            <p>Industry-Ready Analysts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-image">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Financial Training">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="curriculum">
+        <div class="container">
+            <h2>Training Curriculum</h2>
+            <p class="section-intro">Our comprehensive WallStreetPrep curriculum covers all essential financial modeling skills for investment analysis.</p>
+            
+            <div class="modules-container">
+                <div class="module">
+                    <div class="module-header">
+                        <h3>Module 1: Financial Statement Analysis</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="module-content">
+                        <p>Master the fundamentals of financial statement analysis with a focus on interpreting income statements, balance sheets, and cash flow statements for investment decisions.</p>
+                        <div class="module-topics">
+                            <div class="topic">
+                                <h4><i class="fas fa-chart-line"></i>Income Statement Analysis</h4>
+                                <p>Revenue recognition, COGS, operating expenses, and profitability metrics</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-balance-scale"></i>Balance Sheet Analysis</h4>
+                                <p>Asset valuation, liability assessment, and equity analysis</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-money-bill-wave"></i>Cash Flow Analysis</h4>
+                                <p>Operating, investing, and financing cash flows assessment</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-percent"></i>Ratio Analysis</h4>
+                                <p>Liquidity, profitability, solvency, and efficiency ratios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3>Module 2: Financial Modeling Fundamentals</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="module-content">
+                        <p>Build robust financial models from scratch using industry best practices and Excel efficiency techniques.</p>
+                        <div class="module-topics">
+                            <div class="topic">
+                                <h4><i class="fas fa-cube"></i>Model Structure Design</h4>
+                                <p>Best practices for building scalable, flexible models</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-project-diagram"></i>Modeling Best Practices</h4>
+                                <p>Error-proofing, documentation, and auditing techniques</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-bolt"></i>Excel Efficiency</h4>
+                                <p>Advanced functions, shortcuts, and productivity tools</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-sync-alt"></i>Circular References</h4>
+                                <p>Managing circularities in financial models</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3>Module 3: DCF Modeling & Valuation</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="module-content">
+                        <p>Master discounted cash flow valuation techniques to determine intrinsic company value and make informed investment decisions.</p>
+                        <div class="module-topics">
+                            <div class="topic">
+                                <h4><i class="fas fa-calculator"></i>Free Cash Flow Calculation</h4>
+                                <p>Unlevered vs. levered free cash flow methodologies</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-chart-line"></i>Forecasting Techniques</h4>
+                                <p>Top-down vs. bottom-up revenue forecasting approaches</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-percentage"></i>WACC Calculation</h4>
+                                <p>Cost of equity, cost of debt, and optimal capital structure</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-infinity"></i>Terminal Value Methods</h4>
+                                <p>Perpetuity growth vs. exit multiple approaches</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3>Module 4: Advanced Modeling Techniques</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="module-content">
+                        <p>Develop sophisticated models for complex financial scenarios and specialized industry applications.</p>
+                        <div class="module-topics">
+                            <div class="topic">
+                                <h4><i class="fas fa-industry"></i>M&A Modeling</h4>
+                                <p>Accretion/dilution analysis and merger consequences</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-sitemap"></i>LBO Modeling</h4>
+                                <p>Leveraged buyout analysis and returns calculation</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-building"></i>Real Estate Modeling</h4>
+                                <p>Development pro formas and stabilized cash flow analysis</p>
+                            </div>
+                            <div class="topic">
+                                <h4><i class="fas fa-chart-bar"></i>Scenario & Sensitivity Analysis</h4>
+                                <p>Building flexible models for different economic scenarios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2>Program Benefits</h2>
+            <p class="section-intro">Our WallStreetPrep training program provides analysts with comprehensive benefits that enhance their professional capabilities.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Enhanced Analytical Skills</h3>
+                        <p>Develop superior financial analysis capabilities through rigorous training in:</p>
+                        <ul>
+                            <li>Advanced financial modeling techniques</li>
+                            <li>DCF valuation methodologies</li>
+                            <li>Scenario and sensitivity analysis</li>
+                            <li>Industry-specific modeling approaches</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Industry-Recognized Certification</h3>
+                        <p>Earn the prestigious WallStreetPrep Financial Modeling Certification, recognized by leading financial institutions:</p>
+                        <ul>
+                            <li>Validates your modeling expertise</li>
+                            <li>Enhances your professional credentials</li>
+                            <li>Differentiates you in the job market</li>
+                            <li>Demonstrates commitment to excellence</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Career Advancement</h3>
+                        <p>Gain a competitive edge in the finance industry with skills that open doors to advanced opportunities:</p>
+                        <ul>
+                            <li>Preparation for investment banking roles</li>
+                            <li>Enhanced performance in equity research</li>
+                            <li>Qualifications for corporate finance positions</li>
+                            <li>Foundation for private equity careers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Analyst Testimonials</h2>
+            <p class="section-intro">Hear from analysts who have transformed their careers through our training program.</p>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        The WallStreetPrep training completely transformed how I approach financial modeling. The DCF module alone gave me insights that have significantly improved my valuation accuracy. This program is a game-changer for anyone serious about investment analysis.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Lim">
+                        </div>
+                        <h4>Sarah Lim</h4>
+                        <p>Senior Analyst, Monarch Research</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        As someone transitioning from engineering to finance, this program gave me the practical modeling skills I needed. The hands-on approach with real case studies made complex concepts accessible. I now feel confident building models from scratch.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Tan">
+                        </div>
+                        <h4>James Tan</h4>
+                        <p>Technology Sector Analyst</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        The certification from WallStreetPrep opened doors I didn't expect. During interviews, hiring managers specifically mentioned it as a key differentiator. The program doesn't just teach modeling - it teaches how to think like an investor.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Sharma">
+                        </div>
+                        <h4>Priya Sharma</h4>
+                        <p>Former Analyst, Now at Goldman Sachs</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <button id="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <h2>Transform Your Financial Analysis Skills</h2>
+            <p>Join our elite training program and become a certified financial modeling expert with WallStreetPrep</p>
+            <a href="#" class="btn btn-gold">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Monarch Research</h4>
+                    <p>Singapore's Premier Youth-Led Financial Research Society</p>
+                    <p>Professional Development Division</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Program Information</h4>
+                    <ul>
+                        <li><a href="#overview">Program Overview</a></li>
+                        <li><a href="#curriculum">Curriculum</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>WallStreetPrep</h4>
+                    <ul>
+                        <li><a href="#">Official Website</a></li>
+                        <li><a href="#">Certification Details</a></li>
+                        <li><a href="#">Learning Resources</a></li>
+                        <li><a href="#">Corporate Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:training@monarchresearch.sg">training@monarchresearch.sg</a></li>
+                        <li><a href="#">Singapore</a></li>
+                        <li><a href="#">+65 6123 4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Monarch Research. All rights reserved. | WallStreetPrep® is a registered trademark of Wall Street Prep, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Module accordion functionality
+        const moduleHeaders = document.querySelectorAll('.module-header');
+        moduleHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const module = header.parentElement;
+                const content = module.querySelector('.module-content');
+                
+                // Close all other modules
+                document.querySelectorAll('.module-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.querySelector('i').className = 'fas fa-chevron-down';
+                    }
+                });
+                
+                // Toggle current module
+                content.classList.toggle('active');
+                const icon = header.querySelector('i');
+                icon.className = content.classList.contains('active') ? 
+                    'fas fa-chevron-up' : 'fas fa-chevron-down';
+            });
+        });
+        
+        // Testimonial slider functionality
+        const testimonials = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.toggle('active', i === index);
+            });
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 7000);
+        
+        // Animation on scroll for benefit cards
+        const benefitCards = document.querySelectorAll('.benefit-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observe benefit cards
+        benefitCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
